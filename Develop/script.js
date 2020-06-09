@@ -1,5 +1,5 @@
 var generateBtn = document.querySelector("#generate");
-var cardBody = document.querySelector("#card-body");
+var cardBody = document.getElementById("password");
 var pwdLength = 0;
 /* var lowerCase = ""; */
 var alphaCharArray = [
@@ -106,7 +106,7 @@ function generatePassword() {
     alert("Must be less than 128 char");
     return;
   }
-  console.log("user entered password length " + pwdLength);
+  /* console.log("user entered password length " + pwdLength); */
   var lowerCase = confirm(
     "Do you want you want this password to contain lowercase letters?"
   );
@@ -133,7 +133,7 @@ function generatePassword() {
     allOptions = allOptions.concat(specialCharArray);
     /* console.log("specialChar pushed"); */
   }
-  console.log("--------------");
+  /* console.log("--------------"); */
   /* console.log(allOptions.length); */
   /* create for loop to grab random value from the allOptions array*/
   for (var i = 0; i <= pwdLength; i++) {
@@ -147,14 +147,14 @@ generatePassword();
 /* console.log(passwordArray.length); */
 
 function writePassword() {
-  console.log(passwordArray)
-  cardBody.textContent = passwordArray;
-  cardBody.appendChild(passwordArray) 
+  /* console.log(passwordArray) */
+  /* var cardBody = document.getElementById("password"); */
+  cardBody.setAttribute("placeholder", passwordArray);
+
+  /*   cardBody.textContent = passwordArray;
+  cardBody.appendChild(passwordArray) */
 }
 writePassword();
 
 // Add event listener to generate button
- generateBtn.addEventListener("click", writePassword);
-
-
- 
+generateBtn.addEventListener("click", writePassword);

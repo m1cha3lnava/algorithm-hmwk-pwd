@@ -1,4 +1,5 @@
 # Random Character Password Generator
+
 https://m1cha3lnava.github.io/algorithm-hmwk-pwd/
 
 ## Description
@@ -14,19 +15,18 @@ No installation required. Open as webpage in a web browser.
 Click the red "Generate Password" button to display a randomly generated password that meets your constraints.
 
 Screen shots of the webpage
-![screen cap 1](./screenshot1.png)
-![screen cap 2](./screenshot2.png)
-![screen cap 3](./screenshot3.png)
-
-Sample screen shot of the code
-![screen cap 4](./screenshot4.png)
-
-Sample screen shot of the css
-![screen cap 5](./screenshot5.png)
+![screen cap 1](./Develop/screenshot1.png)
+![screen cap 2](./Develop/screenshot2.png)
+![screen cap 3](./Develop/screenshot3.png)
+![screen cap 4](./Develop/screenshot4.png)
+![screen cap 5](./Develop/screenshot5.png)
+![screen cap 6](./Develop/screenshot6.png)
+![screen cap 7](./Develop/screenshot7.png)
+![screen cap 8](./Develop/screenshot8.png)
 
 ## Credits
 
-I  modified the javascript file based on what I have learned from a Georgia Tech bootcamp.
+I modified the javascript file based on what I have learned from a Georgia Tech bootcamp.
 
 ## License
 
