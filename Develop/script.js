@@ -1,4 +1,5 @@
 var generateBtn = document.querySelector("#generate");
+var cardBody = document.querySelector("#card-body");
 var pwdLength = 0;
 /* var lowerCase = ""; */
 var alphaCharArray = [
@@ -94,56 +95,66 @@ var allOptions = [];
  */
 /* Need to prompt user for conditions */
 function generatePassword() {
-    var pwdLength = prompt(
-        "How long do you want the password to be? (Enter number 8 through 128)"
-    );
-    if (pwdLength < 7) {
-        alert("Must be more than 7 char");
-        return;
-    }
-    if (pwdLength > 128) {
-        alert("Must be less than 128 char");
-        return;
-    }
-    console.log("user entered password length " + pwdLength);
-    var lowerCase = confirm(
-        "Do you want you want this password to contain lowercase letters?"
-    );
-    if (lowerCase) {
-        allOptions = allOptions.concat(alphaCharArray);
-        /* console.log("lowercase pushed"); */
-    }
-    var upperCase = confirm(
-        "Do you want you want this password to contain uppercase letters?"
-    );
-    if (upperCase) {
-        allOptions = allOptions.concat(upperCaseArray);
-        console.log("uppercase pushed");
-    }
-    var numericChar = confirm("Do you want this password to contain numbers?");
-    if (numericChar) {
-        allOptions = allOptions.concat(numberCharArray);
-        console.log("numbers pushed");
-    }
-    var specialChar = confirm(
-        "Do you want this password to contain special characters?"
-    );
-    if (specialChar) {
-        allOptions = allOptions.concat(specialCharArray);
-        console.log("specialChar pushed");
-    }
-    console.log("--------------");
-    console.log(allOptions.length);
-    /* create for loop to grab random value from the allOptions array*/
-    for (var i = 0; i <= pwdLength; i++) {
-        passwordArray += allOptions[Math.floor(Math.random() * allOptions.length)];
-        console.log("password array:" + passwordArray);
-    }
+  var pwdLength = prompt(
+    "How long do you want the password to be? (Enter number 8 through 128)"
+  );
+  if (pwdLength < 7) {
+    alert("Must be more than 7 char");
+    return;
+  }
+  if (pwdLength > 128) {
+    alert("Must be less than 128 char");
+    return;
+  }
+  console.log("user entered password length " + pwdLength);
+  var lowerCase = confirm(
+    "Do you want you want this password to contain lowercase letters?"
+  );
+  if (lowerCase) {
+    allOptions = allOptions.concat(alphaCharArray);
+    /* console.log("lowercase pushed"); */
+  }
+  var upperCase = confirm(
+    "Do you want you want this password to contain uppercase letters?"
+  );
+  if (upperCase) {
+    allOptions = allOptions.concat(upperCaseArray);
+    /* console.log("uppercase pushed"); */
+  }
+  var numericChar = confirm("Do you want this password to contain numbers?");
+  if (numericChar) {
+    allOptions = allOptions.concat(numberCharArray);
+    /* console.log("numbers pushed"); */
+  }
+  var specialChar = confirm(
+    "Do you want this password to contain special characters?"
+  );
+  if (specialChar) {
+    allOptions = allOptions.concat(specialCharArray);
+    /* console.log("specialChar pushed"); */
+  }
+  console.log("--------------");
+  /* console.log(allOptions.length); */
+  /* create for loop to grab random value from the allOptions array*/
+  for (var i = 0; i <= pwdLength; i++) {
+    passwordArray += allOptions[Math.floor(Math.random() * allOptions.length)];
+    /* console.log("password array:" + passwordArray); */
+  }
 }
 
 /* Callback to the function */
 generatePassword();
-console.log(passwordArray.length);
+/* console.log(passwordArray.length); */
+
+function writePassword() {
+  console.log(passwordArray)
+  cardBody.textContent = passwordArray;
+  cardBody.appendChild(passwordArray) 
+}
+writePassword();
+
 // Add event listener to generate button
-/* generateBtn.addEventListener("click", writePassword);
- */
+ generateBtn.addEventListener("click", writePassword);
+
+
+ 
