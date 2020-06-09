@@ -1,8 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var pwdLength = 0;
-var lowerCase = "";
-var password = "";
+/* var lowerCase = ""; */
 var alphaCharArray = [
   "a",
   "b",
@@ -31,6 +30,40 @@ var alphaCharArray = [
   "y",
   "z",
 ];
+var upperCaseArray = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+/* upperCase = upperCase.concat(alphaCharArray);
+/* console.log(upperCase); */
+/* for (var i = 0; i < upperCase.length; i++) {
+  upperCase[i] = upperCase[i].toLocaleUpperCase();
+} 
+console.log(upperCase); */
 var specialCharArray = [
   ",",
   ".",
@@ -52,6 +85,7 @@ var specialCharArray = [
 ];
 var numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var passwordArray = [];
+var allOptions = [];
 
 // Write password to the #password input
 /* function writePassword() {
@@ -63,59 +97,67 @@ var passwordArray = [];
 }
  */
 /* Need to prompt user for conditions */
-function userPrompt() {
+
+function userPrompts() {
   var pwdLength = prompt(
     "How long do you want the password to be? (Enter number 8 through 128)"
   );
-  console.log(pwdLength);
+
+  if (pwdLength < 7) {
+    alert("Must be more than 7 char");
+    return;
+  }
+  if (pwdLength > 128) {
+    alert("Must be less than 128 char");
+    return;
+  }
+  console.log("user entered password length " + pwdLength);
+
   var lowerCase = confirm(
     "Do you want you want this password to contain lowercase letters?"
   );
-  console.log(lowerCase);
+  if (lowerCase) {
+    allOptions = allOptions.concat(alphaCharArray);
+    console.log("lowercase pushed");
+  }
+
   var upperCase = confirm(
-    "Do you want this password to contain uppercase letters?"
+    "Do you want you want this password to contain uppercase letters?"
   );
-  console.log(upperCase);
+  if (upperCase) {
+    allOptions = allOptions.concat(upperCaseArray);
+    console.log("uppercase pushed");
+  }
+
   var numericChar = confirm("Do you want this password to contain numbers?");
-  console.log(numericChar);
+  if (numericChar) {
+    allOptions = allOptions.concat(numberCharArray);
+    console.log("numbers pushed");
+  }
+
   var specialChar = confirm(
     "Do you want this password to contain special characters?"
   );
-  console.log(specialChar);
+  if (specialChar) {
+    allOptions = allOptions.concat(specialCharArray);
+    console.log("specialChar pushed");
+  }
   console.log("--------------");
+
+  console.log(allOptions.length);
 }
+/* generatePassword() */
 
-/* Start of logic */
-userPrompt()
-
-if (pwdLength > 7 && pwdLength < 129) {
-  console.log("Valid pwd length");
-  generatePassword();
-} else {
-  alert("Please enter a valid number between 8 and 128.");
-  console.log("Invalid pwd length");
-  userPrompt();
-}
-
+userPrompts();
 
 /* create for loop to grab values to meet the desired length */
-function generatePassword() {
+/* function generatePassword() {
   for (var i = 0; i <= pwdLength; i++) {
-    passwordArray.push(i);
+    passwordArray.push();
   }
 }
 console.log(passwordArray.length);
 
-function getLowercase() {
-  if (lowerCase == "true") {
-    var num = Math.floor(Math.random() * 26) + 1;
-    console.log(alphaCharArray[num]);
-  } else if (lowerCase == "false") {
-    console.log("No lowercase selected");
-  } else {
-    console.log("ERROR");
-  }
-}
 
 // Add event listener to generate button
 /* generateBtn.addEventListener("click", writePassword);
