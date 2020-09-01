@@ -1,7 +1,6 @@
 var generateBtn = document.querySelector("#generate");
 var cardBody = document.getElementById("password");
 var pwdLength = 0;
-/* var lowerCase = ""; */
 var alphaCharArray = [
   "a",
   "b",
@@ -82,12 +81,7 @@ var numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var passwordArray = "";
 var allOptions = [];
 
-function clearCard() {
-  cardBody.setAttribute("placeholder", "");
-}
-
 function promptUser() {
-  clearCard();
   pwdLength = prompt(
     "How long do you want the password to be? (Enter number 8 through 128)"
   );
@@ -114,14 +108,12 @@ function confirmOptions() {
   var numericChar = confirm("Do you want this password to contain numbers?");
   if (numericChar) {
     allOptions = allOptions.concat(numberCharArray);
-    /* console.log("numbers pushed"); */
   }
   var specialChar = confirm(
     "Do you want this password to contain special characters?"
   );
   if (specialChar) {
     allOptions = allOptions.concat(specialCharArray);
-    /* console.log("specialChar pushed"); */
   }
   generatePassword();
 }
@@ -134,9 +126,9 @@ function generatePassword() {
 }
 
 function writePassword() {
-  cardBody.setAttribute("placeholder", passwordArray);
-  pwdLength = 0;
+  var password = passwordArray;
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", promptUser);
