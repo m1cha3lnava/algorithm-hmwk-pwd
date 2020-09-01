@@ -120,7 +120,6 @@ function confirmOptions() {
 }
 
 function generatePassword() {
-  console.log(allOptions);
   for (var i = 0; i <= pwdLength; i++) {
     passwordArray += allOptions[Math.floor(Math.random() * allOptions.length)];
   }
