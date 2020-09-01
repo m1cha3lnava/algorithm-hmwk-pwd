@@ -1,7 +1,7 @@
-var generateBtn = document.querySelector("#generate");
-var cardBody = document.getElementById("password");
-var pwdLength = 0;
-var alphaCharArray = [
+const generateBtn = document.querySelector("#generate");
+const cardBody = document.getElementById("password");
+let pwdLength = 0;
+const alphaCharArray = [
   "a",
   "b",
   "c",
@@ -29,7 +29,7 @@ var alphaCharArray = [
   "y",
   "z",
 ];
-var upperCaseArray = [
+const upperCaseArray = [
   "A",
   "B",
   "C",
@@ -58,7 +58,7 @@ var upperCaseArray = [
   "Z",
 ];
 
-var specialCharArray = [
+const specialCharArray = [
   ",",
   ".",
   "/",
@@ -77,9 +77,9 @@ var specialCharArray = [
   "_",
   "+",
 ];
-var numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var passwordArray = "";
-var allOptions = [];
+const numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let passwordArray = "";
+let allOptions = [];
 
 function promptUser() {
   pwdLength = prompt(
@@ -122,7 +122,11 @@ function generatePassword() {
   for (var i = 0; i <= pwdLength; i++) {
     passwordArray += allOptions[Math.floor(Math.random() * allOptions.length)];
   }
-  writePassword();
+  if (allOptions.length > 0) {
+    writePassword();
+  } else {
+    alert("You must select at least one option");
+  }
 }
 
 function writePassword() {
