@@ -58,12 +58,7 @@ var upperCaseArray = [
   "Y",
   "Z",
 ];
-/* upperCase = upperCase.concat(alphaCharArray);
-/* console.log(upperCase); */
-/* for (var i = 0; i < upperCase.length; i++) {
-  upperCase[i] = upperCase[i].toLocaleUpperCase();
-} 
-console.log(upperCase); */
+
 var specialCharArray = [
   ",",
   ".",
@@ -86,27 +81,17 @@ var specialCharArray = [
 var numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var passwordArray = "";
 var allOptions = [];
-// Write password to the #password input
-/* function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-}
- */
+
 /* Need to prompt user for conditions */
 function generatePassword() {
   var pwdLength = prompt(
     "How long do you want the password to be? (Enter number 8 through 128)"
   );
-  if (pwdLength < 7) {
-    alert("Must be more than 7 char");
+  if (pwdLength < 7 || pwdLength > 128) {
+    alert("Password must be between 7 and 128 characters");
     return;
   }
-  if (pwdLength > 128) {
-    alert("Must be less than 128 char");
-    return;
-  }
-  /* console.log("user entered password length " + pwdLength); */
+
   var lowerCase = confirm(
     "Do you want you want this password to contain lowercase letters?"
   );
@@ -133,9 +118,7 @@ function generatePassword() {
     allOptions = allOptions.concat(specialCharArray);
     /* console.log("specialChar pushed"); */
   }
-  /* console.log("--------------"); */
-  /* console.log(allOptions.length); */
-  /* create for loop to grab random value from the allOptions array*/
+
   for (var i = 0; i <= pwdLength; i++) {
     passwordArray += allOptions[Math.floor(Math.random() * allOptions.length)];
     /* console.log("password array:" + passwordArray); */
