@@ -82,18 +82,22 @@ var numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var passwordArray = "";
 var allOptions = [];
 
-generatePassword();
+function clearCard() {
+  cardBody.setAttribute("placeholder", "");
+}
 
-function validatePasswordLength() {
-  console.log(pwdLength);
-  if (isNaN(pwdLength)) {
-    alert("Please enter a number");
-    generatePassword();
-  } else if (pwdLength < 7 || pwdLength > 128) {
-    alert("Password must be between 7 and 128 characters");
-    generatePassword();
+function promptUser() {
+  clearCard();
+  pwdLength = prompt(
+    "How long do you want the password to be? (Enter number 8 through 128)"
+  );
+  if (pwdLength > 7 && pwdLength < 129) {
+    confirmOptions();
+  } else {
+    alert("Enter a valid number to continue");
   }
 }
+
 function confirmOptions() {
   var lowerCase = confirm(
     "Do you want you want this password to contain lowercase letters?"
@@ -119,33 +123,20 @@ function confirmOptions() {
     allOptions = allOptions.concat(specialCharArray);
     /* console.log("specialChar pushed"); */
   }
+  generatePassword();
 }
 
 function generatePassword() {
-  console.log("generate password");
-  pwdLength = prompt(
-    "How long do you want the password to be? (Enter number 8 through 128)"
-  );
-  validatePasswordLength();
-  confirmOptions();
-
   for (var i = 0; i <= pwdLength; i++) {
     passwordArray += allOptions[Math.floor(Math.random() * allOptions.length)];
-    /* console.log("password array:" + passwordArray); */
   }
+  writePassword();
 }
-
-/* console.log(passwordArray.length); */
 
 function writePassword() {
-  /* console.log(passwordArray) */
-  /* var cardBody = document.getElementById("password"); */
   cardBody.setAttribute("placeholder", passwordArray);
-
-  /*   cardBody.textContent = passwordArray;
-  cardBody.appendChild(passwordArray) */
+  pwdLength = 0;
 }
-writePassword();
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", promptUser);
