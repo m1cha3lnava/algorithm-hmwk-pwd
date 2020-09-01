@@ -98,31 +98,23 @@ function confirmOptions() {
     "Do you want you want this password to contain lowercase letters?"
   );
   if (lowerCase) {
-    console.log("lowercase");
     allOptions = allOptions.concat(alphaCharArray);
-    console.log(allOptions);
   }
   var upperCase = confirm(
     "Do you want you want this password to contain uppercase letters?"
   );
   if (upperCase) {
-    console.log("uppercase");
     allOptions = allOptions.concat(upperCaseArray);
-    console.log(allOptions);
   }
   var numericChar = confirm("Do you want this password to contain numbers?");
   if (numericChar) {
-    console.log("numbers");
     allOptions = allOptions.concat(numberCharArray);
-    console.log(allOptions);
   }
   var specialChar = confirm(
     "Do you want this password to contain special characters?"
   );
   if (specialChar) {
-    console.log("special");
     allOptions = allOptions.concat(specialCharArray);
-    console.log(allOptions);
   }
   generatePassword();
 }
