@@ -82,29 +82,30 @@ var numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var passwordArray = "";
 var allOptions = [];
 
-/* Need to prompt user for conditions */
-function generatePassword() {
-  var pwdLength = prompt(
-    "How long do you want the password to be? (Enter number 8 through 128)"
-  );
-  if (pwdLength < 7 || pwdLength > 128) {
-    alert("Password must be between 7 and 128 characters");
-    return;
-  }
+generatePassword();
 
+function validatePasswordLength() {
+  console.log(pwdLength);
+  if (isNaN(pwdLength)) {
+    alert("Please enter a number");
+    generatePassword();
+  } else if (pwdLength < 7 || pwdLength > 128) {
+    alert("Password must be between 7 and 128 characters");
+    generatePassword();
+  }
+}
+function confirmOptions() {
   var lowerCase = confirm(
     "Do you want you want this password to contain lowercase letters?"
   );
   if (lowerCase) {
     allOptions = allOptions.concat(alphaCharArray);
-    /* console.log("lowercase pushed"); */
   }
   var upperCase = confirm(
     "Do you want you want this password to contain uppercase letters?"
   );
   if (upperCase) {
     allOptions = allOptions.concat(upperCaseArray);
-    /* console.log("uppercase pushed"); */
   }
   var numericChar = confirm("Do you want this password to contain numbers?");
   if (numericChar) {
@@ -118,6 +119,15 @@ function generatePassword() {
     allOptions = allOptions.concat(specialCharArray);
     /* console.log("specialChar pushed"); */
   }
+}
+
+function generatePassword() {
+  console.log("generate password");
+  pwdLength = prompt(
+    "How long do you want the password to be? (Enter number 8 through 128)"
+  );
+  validatePasswordLength();
+  confirmOptions();
 
   for (var i = 0; i <= pwdLength; i++) {
     passwordArray += allOptions[Math.floor(Math.random() * allOptions.length)];
@@ -125,8 +135,6 @@ function generatePassword() {
   }
 }
 
-/* Callback to the function */
-generatePassword();
 /* console.log(passwordArray.length); */
 
 function writePassword() {
